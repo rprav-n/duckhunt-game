@@ -70,32 +70,55 @@ animations = [ {
 
 [sub_resource type="Animation" id=23]
 resource_name = "start"
-length = 5.0
+length = 7.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Area2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 3, 4, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -100, 520 ), Vector2( 350, 520 ) ]
+"values": [ Vector2( -70, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 70, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 4.1, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "ChangeAnimation"
+}, {
+"args": [  ],
+"method": "ChangeAnimation"
+}, {
+"args": [  ],
+"method": "ChangeAnimation"
+} ]
 }
 
-[node name="Dog" type="Area2D"]
-position = Vector2( 100, 0 )
+[node name="Dog" type="Node2D"]
+position = Vector2( -100, 520 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
 frames = SubResource( 6 )
 animation = "walk"
+frame = 1
 playing = true
 offset = Vector2( -10, 0 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -10, 3.5 )
 rotation = 1.5708
 shape = SubResource( 16 )
